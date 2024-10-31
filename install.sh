@@ -96,7 +96,9 @@ function start-up(){
 
     echo "$info_base starting services" >> $logfile
 
-    sudo docker-compose up --build
+    sudo docker build -t $docker_img_name .
+
+    sudo docker run --rm $docker_img_name
 
     echo "$info_base ended" >> $logfile
 
@@ -110,8 +112,6 @@ function tear-down(){
     echo "$info_base started" >> $logfile
 
     echo "$info_base starting services" >> $logfile
-
-    sudo docker-compose down
 
     echo "$info_base ended" >> $logfile
 
